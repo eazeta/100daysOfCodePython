@@ -12,7 +12,8 @@ def encode(message, shift):
     position = alphabet.index(letter)
     newposition = position + shift
     if newposition > 25:
-      newposition -= 26
+      multiplier = newposition//26 #Double backslash is floor division
+      newposition -= (26 * multiplier)
     encryptedMessage.append(alphabet[newposition])
   
   print(''.join(encryptedMessage))
@@ -27,7 +28,8 @@ def decode(message, shift):
     position = alphabet.index(letter)
     newposition = position - shift
     if newposition < 1:
-      newposition += 26
+      multiplier = newposition//26 #Double backslash is floor division
+      newposition += abs(26 * multiplier)
     decryptedMessage.append(alphabet[newposition])
   
   print(''.join(decryptedMessage))
